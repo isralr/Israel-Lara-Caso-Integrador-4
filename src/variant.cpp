@@ -1,6 +1,6 @@
 #include "variant.h"
 #include <iostream>
-#include "json11/json11.hpp"
+#include "json/json11.hpp"
 #include <sstream>
 
 Variant::Variant(variant_type type) : type(type), env(nullptr), proc(nullptr) {}

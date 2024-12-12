@@ -1,0 +1,3 @@
+C:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/cmake-build-debug/CMakeFiles/Israel_Lara_Caso_Integrador_4.dir
+C:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/cmake-build-debug/CMakeFiles/rebuild_cache.dir

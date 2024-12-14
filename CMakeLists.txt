@@ -14,4 +14,5 @@ add_executable(Israel_Lara_Caso_Integrador_4
         src/funciones.h
         src/variant.cpp
         src/variant.h
-        main.cpp)
+        main.cpp
+        libs/json11.cpp)

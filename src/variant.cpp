@@ -1,63 +1,59 @@
 #include "variant.h"
-#include <iostream>
-#include "json/json11.hpp"
-#include <sstream>
+#include <stdexcept>
 
-Variant::Variant(variant_type type) : type(type), env(nullptr), proc(nullptr) {}
+// Constructor por defecto
+Variant::Variant(Type type) : type(type), value(""), proc(nullptr) {}
 
-Variant::Variant(variant_type type, const std::string& val)
-    : type(type), val(val), env(nullptr), proc(nullptr) {}
+// Constructor para un valor específico
+Variant::Variant(Type type, const std::string& val) : type(type), value(val), proc(nullptr) {}
 
-Variant::Variant(proc_type proc) : type(Proc), proc(proc), env(nullptr) {}
+// Constructor para procedimientos
+Variant::Variant(proc_type proc) : type(Type::Proc), value(""), proc(proc) {}
 
-std::string Variant::to_string() {
+// Método to_string para representar la variante como cadena
+std::string Variant::to_string() const {
     switch (type) {
-        case Symbol:
-            return "Symbol: " + val;
-        case Number:
-            return "Number: " + val;
-        case List: {
-            std::string result = "List: [";
+        case Type::Symbol:
+        case Type::Cadena:
+            return value;
+        case Type::Number:
+            return value;
+        case Type::List: {
+            std::string result = "[";
             for (const auto& item : list) {
                 result += item.to_string() + ", ";
             }
-            if (!list.empty()) result.pop_back(), result.pop_back();  // Eliminar última coma
+            if (!list.empty()) {
+                result.pop_back();  // Quitar la coma final
+                result.pop_back();  // Quitar el espacio
+            }
             result += "]";
             return result;
         }
-        case Proc:
-            return "Proc: Function Pointer";
-        case Lambda:
-            return "Lambda: Function Pointer";
-        case Cadena:
-            return "Cadena: " + val;
         default:
-            return "Unknown type";
+            return "Unknown Type";
     }
 }
 
-std::string Variant::to_json_string() {
+// Método para convertir la variante a una cadena JSON
+std::string Variant::to_json_string() const {
     json11::Json json_obj;
     switch (type) {
-        case Symbol:
-        case Cadena:
-            json_obj = json11::Json(val);
+        case Type::Symbol:
+        case Type::Cadena:
+            json_obj = json11::Json(value);
             break;
-        case Number:
-            json_obj = json11::Json::number(stoi(val));  // Convertir string a número
+        case Type::Number:
+            json_obj = json11::Json(std::stoi(value));  // Convertir string a número
             break;
-        case List: {
+        case Type::List: {
             std::vector<json11::Json> json_list;
             for (const auto& item : list) {
-                json_list.push_back(json11::Json(item.to_json_string()));  // Recursión para listas
+                json_list.push_back(item.to_json_string());
             }
             json_obj = json11::Json(json_list);
             break;
         }
-        case Proc:
-        case Lambda:
-            json_obj = json11::Json::object();  // Reemplazar con la representación adecuada si es necesario
-            break;
         default:
             json_obj = json11::Json::object();
             break;
@@ -65,33 +61,25 @@ std::string Variant::to_json_string() {
     return json_obj.dump();  // Retorna la cadena JSON
 }
 
-Variant Variant::from_json_string(std::string sjson) {
-    json11::Json json_obj = json11::Json::parse(sjson, nullptr);
+// Método estático para convertir una cadena JSON a un objeto Variant
+Variant Variant::from_json_string(const std::string& json) {
+    std::string err;
+    json11::Json json_obj = json11::Json::parse(json, err);  // Parsear el JSON
+    if (!err.empty()) {
+        throw std::runtime_error("Error al parsear JSON: " + err);
+    }
+
     if (json_obj.is_string()) {
-        return Variant(Symbol, json_obj.string_value());
+        return Variant(Type::Symbol, json_obj.string_value());
     } else if (json_obj.is_number()) {
-        return Variant(Number, std::to_string(json_obj.int_value()));
+        return Variant(Type::Number, std::to_string(json_obj.number_value()));
     } else if (json_obj.is_array()) {
-        Variant list_variant(List);
+        Variant list_variant(Type::List);
         for (const auto& item : json_obj.array_items()) {
             list_variant.list.push_back(Variant::from_json_string(item.dump()));
         }
         return list_variant;
     }
-    return Variant();  // Valor predeterminado en caso de error
-}
 
-Variant Variant::parse_json(jsonlib::Json job) {
-    if (job.is_string()) {
-        return Variant(Symbol, job.string_value());
-    } else if (job.is_number()) {
-        return Variant(Number, std::to_string(job.int_value()));
-    } else if (job.is_array()) {
-        Variant list_variant(List);
-        for (const auto& item : job.array_items()) {
-            list_variant.list.push_back(Variant::parse_json(item));
-        }
-        return list_variant;
-    }
     return Variant();  // Valor predeterminado en caso de error
 }

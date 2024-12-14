@@ -52,28 +52,21 @@ build cmake_object_order_depends_target_Israel_Lara_Caso_Integrador_4: phony || 
 build CMakeFiles/Israel_Lara_Caso_Integrador_4.dir/src/funciones.cpp.obj: CXX_COMPILER__Israel_Lara_Caso_Integrador_4_unscanned_Debug C$:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/src/funciones.cpp || cmake_object_order_depends_target_Israel_Lara_Caso_Integrador_4
   DEP_FILE = CMakeFiles\Israel_Lara_Caso_Integrador_4.dir\src\funciones.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/src
+  INCLUDES = -IC:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/src -IC:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/json
   OBJECT_DIR = CMakeFiles\Israel_Lara_Caso_Integrador_4.dir
   OBJECT_FILE_DIR = CMakeFiles\Israel_Lara_Caso_Integrador_4.dir\src
 
 build CMakeFiles/Israel_Lara_Caso_Integrador_4.dir/src/variant.cpp.obj: CXX_COMPILER__Israel_Lara_Caso_Integrador_4_unscanned_Debug C$:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/src/variant.cpp || cmake_object_order_depends_target_Israel_Lara_Caso_Integrador_4
   DEP_FILE = CMakeFiles\Israel_Lara_Caso_Integrador_4.dir\src\variant.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/src
+  INCLUDES = -IC:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/src -IC:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/json
   OBJECT_DIR = CMakeFiles\Israel_Lara_Caso_Integrador_4.dir
   OBJECT_FILE_DIR = CMakeFiles\Israel_Lara_Caso_Integrador_4.dir\src
-
-build CMakeFiles/Israel_Lara_Caso_Integrador_4.dir/json/json11.cpp.obj: CXX_COMPILER__Israel_Lara_Caso_Integrador_4_unscanned_Debug C$:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/json/json11.cpp || cmake_object_order_depends_target_Israel_Lara_Caso_Integrador_4
-  DEP_FILE = CMakeFiles\Israel_Lara_Caso_Integrador_4.dir\json\json11.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/src
-  OBJECT_DIR = CMakeFiles\Israel_Lara_Caso_Integrador_4.dir
-  OBJECT_FILE_DIR = CMakeFiles\Israel_Lara_Caso_Integrador_4.dir\json
 
 build CMakeFiles/Israel_Lara_Caso_Integrador_4.dir/main.cpp.obj: CXX_COMPILER__Israel_Lara_Caso_Integrador_4_unscanned_Debug C$:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/main.cpp || cmake_object_order_depends_target_Israel_Lara_Caso_Integrador_4
   DEP_FILE = CMakeFiles\Israel_Lara_Caso_Integrador_4.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/src
+  INCLUDES = -IC:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/src -IC:/Users/israe/OneDrive/Documentos/GitHub/Israel-Lara-Caso-Integrador-4/json
   OBJECT_DIR = CMakeFiles\Israel_Lara_Caso_Integrador_4.dir
   OBJECT_FILE_DIR = CMakeFiles\Israel_Lara_Caso_Integrador_4.dir
 
@@ -85,7 +78,7 @@ build CMakeFiles/Israel_Lara_Caso_Integrador_4.dir/main.cpp.obj: CXX_COMPILER__I
 #############################################
 # Link the executable Israel_Lara_Caso_Integrador_4.exe
 
-build Israel_Lara_Caso_Integrador_4.exe: CXX_EXECUTABLE_LINKER__Israel_Lara_Caso_Integrador_4_Debug CMakeFiles/Israel_Lara_Caso_Integrador_4.dir/src/funciones.cpp.obj CMakeFiles/Israel_Lara_Caso_Integrador_4.dir/src/variant.cpp.obj CMakeFiles/Israel_Lara_Caso_Integrador_4.dir/json/json11.cpp.obj CMakeFiles/Israel_Lara_Caso_Integrador_4.dir/main.cpp.obj
+build Israel_Lara_Caso_Integrador_4.exe: CXX_EXECUTABLE_LINKER__Israel_Lara_Caso_Integrador_4_Debug CMakeFiles/Israel_Lara_Caso_Integrador_4.dir/src/funciones.cpp.obj CMakeFiles/Israel_Lara_Caso_Integrador_4.dir/src/variant.cpp.obj CMakeFiles/Israel_Lara_Caso_Integrador_4.dir/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Israel_Lara_Caso_Integrador_4.dir
